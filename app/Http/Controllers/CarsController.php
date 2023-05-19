@@ -10,7 +10,7 @@ class CarsController extends Controller
 {
     public function index()
     {
-        $models = Car::all();
+        $models = Car::where("is_active", "=", true)->get();
         return view("Cars.index", ["models" => $models]);
     }
 
@@ -28,6 +28,31 @@ class CarsController extends Controller
         $model->rental_price = $request->input("rental_price");
         $model->is_available = $request->input("is_available") ? true : false;
         
+        $model->save();
+        return redirect("/cars");
+    }
+
+    public function create()
+    {
+        $model = new Car();
+        return view("Cars.create", ["model" => $model]);
+    }
+
+    public function addToDB(Request $request)
+    {
+        $model = new Car();
+        $model->brand = $request->input("brand");
+        $model->model = $request->input("model");
+        $model->rental_price = $request->input("rental_price");
+        $model->is_available = $request->input("is_available") ? true : false;
+        $model->is_active = true;
+        $model->save();
+        return redirect("/cars");
+    }
+    public function delete($id)
+    {
+        $model = Car::find($id);
+        $model->is_active = false;
         $model->save();
         return redirect("/cars");
     }

@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
-                <h1 class="mb-3 bread">All Cars</h1>
-                <a class="btn btn-primary" href="/cars/create">Create new</a>
+                <h1 class="mb-3 bread">All Clients</h1>
+                <a class="btn btn-primary" href="/clients/create">Create new</a>
             </div>
         </div>
     </div>
@@ -21,13 +21,11 @@
             @foreach($models as $model)
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
-                    </div>
                     <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">{{ $model->model }}</a></h2>
+                        <h2 class="mb-0">{{ $model->first_name }} {{ $model->last_name }}</h2>
                         <div class="d-flex mb-3">
-                            <span class="cat">{{$model->brand}}</span>
-                            <p class="price ml-auto">${{$model->rental_price}} <span>/day</span></p>
+                            <span class="cat">{{$model->email}}</span>
+                            <span class="cat">{{$model->phone}}</span>
                         </div>
                         <p class="d-flex mb-0 d-block">
                             <a href="{{ url()->current() }}/edit/{{ $model->id }}" class="btn btn-primary py-2 mr-1">Edit</a>
