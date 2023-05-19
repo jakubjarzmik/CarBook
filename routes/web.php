@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\ClientsController;
 use Illuminate\Support\Facades\Route;
 
 /*

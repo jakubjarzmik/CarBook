@@ -33,12 +33,12 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input name="email" type="number" class="form-control" placeholder="E-Mail" value="{{ $model->email }}">
+                                <input name="email" type="text" class="form-control" placeholder="E-Mail" value="{{ $model->email }}">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input name="phone" type="number" class="form-control" placeholder="Phone Number" value="{{ $model->phone }}">
+                                <input name="phone" type="text" class="form-control" placeholder="Phone Number" value="{{ $model->phone }}">
                             </div>
                         </div>
                         <div class="col-md-6">

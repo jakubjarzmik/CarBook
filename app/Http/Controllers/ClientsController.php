@@ -28,7 +28,7 @@ class ClientsController extends Controller
         $model->phone = $request->input("phone");
         
         $model->save();
-        return redirect("/Clients");
+        return redirect("/clients");
     }
 
     public function create()
@@ -46,13 +46,13 @@ class ClientsController extends Controller
         $model->phone = $request->input("phone");
         $model->is_active = true;
         $model->save();
-        return redirect("/Clients");
+        return redirect("/clients");
     }
     public function delete($id)
     {
         $model = Client::find($id);
         $model->is_active = false;
         $model->save();
-        return redirect("/Clients");
+        return redirect("/clients");
     }
 }
