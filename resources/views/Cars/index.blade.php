@@ -21,7 +21,7 @@
             @foreach($models as $model)
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
+                    <div class="img rounded d-flex align-items-end" style="background-image: url({{$model->image_path}});">
                     </div>
                     <div class="text">
                         <h2 class="mb-0"><a href="car-single.html">{{ $model->model }}</a></h2>

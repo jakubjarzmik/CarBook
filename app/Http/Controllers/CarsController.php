@@ -27,7 +27,18 @@ class CarsController extends Controller
         $model->model = $request->input("model");
         $model->rental_price = $request->input("rental_price");
         $model->is_available = $request->input("is_available") ? true : false;
-        
+
+        if($request->hasFile('car_image')) {
+            $file = $request->file('car_image');
+            $extension = $file->getClientOriginalExtension();
+    
+            $filename = \Illuminate\Support\Str::slug($model->brand . '-' . $model->model) . '.' . $extension;
+            $filePath = 'images/cars/' . $filename;
+            $file->move(public_path('images/cars'), $filename);
+    
+            $model->image_path = $filePath;
+        }
+
         $model->save();
         return redirect("/cars");
     }
@@ -39,16 +50,32 @@ class CarsController extends Controller
     }
 
     public function addToDB(Request $request)
-    {
-        $model = new Car();
-        $model->brand = $request->input("brand");
-        $model->model = $request->input("model");
-        $model->rental_price = $request->input("rental_price");
-        $model->is_available = $request->input("is_available") ? true : false;
-        $model->is_active = true;
-        $model->save();
-        return redirect("/cars");
+{
+    $model = new Car();
+    $model->brand = $request->input("brand");
+    $model->model = $request->input("model");
+    $model->rental_price = $request->input("rental_price");
+    $model->is_available = $request->input("is_available") ? true : false;
+    $model->is_active = true;
+
+    
+    if($request->hasFile('car_image')) {
+        $file = $request->file('car_image');
+        $extension = $file->getClientOriginalExtension();
+
+        $filename = \Illuminate\Support\Str::slug($model->brand . '-' . $model->model) . '.' . $extension;
+        $filePath = 'images/cars/' . $filename;
+        $file->move(public_path('images/cars'), $filename);
+
+        $model->image_path = $filePath;
     }
+    
+
+    $model->save();
+
+    return redirect("/cars");
+}
+
     public function delete($id)
     {
         $model = Car::find($id);
