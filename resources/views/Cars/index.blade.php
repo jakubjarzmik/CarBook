@@ -20,8 +20,8 @@
         <div class="row">
             @foreach($models as $model)
             <div class="col-md-4">
-                <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url({{$model->image_path}});">
+                <div class="car-wrap rounded ftco-animate" data-toggle="{{ $model->clients->isEmpty() ? '' : 'tooltip' }}" title="{{ $model->clients->isEmpty() ? '' : 'Currently rented by ' . $model->clients->first()->first_name . ' ' . $model->clients->first()->last_name }}">
+                <div class="img rounded d-flex align-items-end {{ $model->clients->isEmpty() ? '' : 'grayscale' }}" style="background-image: url({{$model->image_path}});">
                     </div>
                     <div class="text">
                         <h2 class="mb-0"><a href="car-single.html">{{ $model->model }}</a></h2>
@@ -30,8 +30,8 @@
                             <p class="price ml-auto">${{$model->rental_price}} <span>/day</span></p>
                         </div>
                         <p class="d-flex mb-0 d-block">
-                            <a href="{{ url()->current() }}/edit/{{ $model->id }}" class="btn btn-primary py-2 mr-1">Edit</a>
-                            <a href="{{ url()->current() }}/delete/{{ $model->id }}" class="btn btn-danger py-2 ml-1">Delete</a>
+                            <a href="{{ $model->clients->isEmpty() ? url()->current() . '/edit/' . $model->id : '#' }}" class="btn btn-primary py-2 mr-1 {{ $model->clients->isEmpty() ? '' : 'disabled' }}">Edit</a>
+                            <a href="{{ $model->clients->isEmpty() ? url()->current() . '/delete/' . $model->id : '#' }}" class="btn btn-danger py-2 ml-1 {{ $model->clients->isEmpty() ? '' : 'disabled' }}">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -40,4 +40,9 @@
         </div>
     </div>
 </section>
+<script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
 @endsection

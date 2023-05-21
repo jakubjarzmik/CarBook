@@ -14,4 +14,15 @@ class Car extends Model
 
     protected $table = "cars";
     protected $primaryKey = "id";
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class, "car_id");
+    }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'rentals', 'car_id', 'client_id')
+            ->wherePivot('return_date', null);
+    }
 }

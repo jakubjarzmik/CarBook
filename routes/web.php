@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\RentalsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,10 @@ Route::post('/clients/update/{id}', [ClientsController::class, "update"]);
 Route::get('/clients/create', [ClientsController::class, "create"]);
 Route::post('/clients/create', [ClientsController::class, "addToDB"]);
 Route::get('/clients/delete/{id}', [ClientsController::class, "delete"]);
+
+Route::get('/rentals', [RentalsController::class, "index"]);
+Route::get('/rentals/edit/{id}', [RentalsController::class, "edit"]);
+Route::post('/rentals/update/{id}', [RentalsController::class, "update"]);
+Route::get('/rentals/create', [RentalsController::class, "create"]);
+Route::post('/rentals/create', [RentalsController::class, "addToDB"]);
+Route::get('/rentals/delete/{id}', [RentalsController::class, "delete"]);
