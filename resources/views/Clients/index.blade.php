@@ -29,12 +29,12 @@
                                 Phone: {{$model->phone}}
                             </p>
                             <p class="d-flex mb-2 d-block">
-                                <button type="button" class="btn btn-primary py-2 mr-1" data-toggle="modal" data-target="#rentals{{$model->first_name}}">Show Rentals</button>
-                                <a href="{{ url()->current() }}/{{ $model->id }}/add-rental" class="btn btn-secondary py-2 mr-1">Add rental</a>
+                                <a href="{{ url()->current() }}/{{ $model->id }}/edit" class="btn btn-primary py-2 mr-1">Edit</a>
+                                <a href="{{ url()->current() }}/{{ $model->id }}/delete" class="btn btn-danger py-2 ml-1">Delete</a>
                             </p>
                             <p class="d-flex mb-2 d-block">
-                                <a href="{{ url()->current() }}/{{ $model->id }}/edit" class="btn btn-secondary py-2 mr-1">Edit</a>
-                                <a href="{{ url()->current() }}/{{ $model->id }}/delete" class="btn btn-danger py-2 ml-1">Delete</a>
+                                <a href="{{ url()->current() }}/{{ $model->id }}/add-rental" class="btn btn-secondary py-2 mr-1">Add rental</a>
+                                <button type="button" class="btn btn-info py-2 mr-1" data-toggle="modal" data-target="#rentals{{$model->first_name}}">Show Rentals</button>
                             </p>
                         </div>
                     </div>

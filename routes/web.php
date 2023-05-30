@@ -26,6 +26,7 @@ Route::post('/cars/{id}/update', [CarsController::class, "update"]);
 Route::get('/cars/create', [CarsController::class, "create"]);
 Route::post('/cars/create', [CarsController::class, "addToDB"]);
 Route::get('/cars/{id}/delete', [CarsController::class, "delete"]);
+Route::post('/cars/validate-model', [CarsController::class, "validateModel"]);
 
 Route::get('/clients', [ClientsController::class, "index"]);
 Route::get('/clients/{id}/edit', [ClientsController::class, "edit"]);
@@ -35,6 +36,7 @@ Route::post('/clients/create', [ClientsController::class, "addToDB"]);
 Route::get('/clients/{id}/delete', [ClientsController::class, "delete"]);
 Route::get('/clients/{id}/add-rental', [ClientsController::class, "addRental"]);
 Route::post('/clients/{id}/add-rental', [ClientsController::class, "addRentalToDB"]);
+Route::post('/clients/validate-model', [ClientsController::class, "validateModel"]);
 
 Route::get('/rentals', [RentalsController::class, "index"]);
 Route::get('/rentals/{id}/return', [RentalsController::class, "return"]);

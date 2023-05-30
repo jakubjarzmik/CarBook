@@ -22,8 +22,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
-                            <div class="input-group">
-                                <label class="input-group-text">
+                            <div class="form-group">
+                                <label for="car_id">
                                     Car
                                 </label>
                                 <select name="car_id" class="form-control validate">
@@ -34,8 +34,8 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-6">
-                            <div class="input-group">
-                                <label class="input-group-text">
+                            <div class="form-group">
+                                <label for="rental_date">
                                     Rental date
                                 </label>
                                 <input name="rental_date" class="form-control validate" type="date" value="{{ date('Y-m-d', strtotime($model->rental_date)) }}">
