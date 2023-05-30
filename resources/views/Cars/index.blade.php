@@ -30,8 +30,8 @@
                             <p class="price ml-auto">${{$model->rental_price}} <span>/day</span></p>
                         </div>
                         <p class="d-flex mb-0 d-block">
-                            <a href="{{ $model->clients->isEmpty() ? url()->current() . '/edit/' . $model->id : '#' }}" class="btn btn-primary py-2 mr-1 {{ $model->clients->isEmpty() ? '' : 'disabled' }}">Edit</a>
-                            <a href="{{ $model->clients->isEmpty() ? url()->current() . '/delete/' . $model->id : '#' }}" class="btn btn-danger py-2 ml-1 {{ $model->clients->isEmpty() ? '' : 'disabled' }}">Delete</a>
+                            <a href="{{ $model->clients->isEmpty() ? url()->current() . '/' . $model->id . '/edit' : '#' }}" class="btn btn-primary py-2 mr-1 {{ $model->clients->isEmpty() ? '' : 'disabled' }}">Edit</a>
+                            <a href="{{ $model->clients->isEmpty() ? url()->current() . '/' . $model->id . '/delete' : '#' }}" class="btn btn-danger py-2 ml-1 {{ $model->clients->isEmpty() ? '' : 'disabled' }}">Delete</a>
                         </p>
                     </div>
                 </div>

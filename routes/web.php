@@ -21,22 +21,21 @@ Route::get('/', function () {
 });
 
 Route::get('/cars', [CarsController::class, "index"]);
-Route::get('/cars/edit/{id}', [CarsController::class, "edit"]);
-Route::post('/cars/update/{id}', [CarsController::class, "update"]);
+Route::get('/cars/{id}/edit', [CarsController::class, "edit"]);
+Route::post('/cars/{id}/update', [CarsController::class, "update"]);
 Route::get('/cars/create', [CarsController::class, "create"]);
 Route::post('/cars/create', [CarsController::class, "addToDB"]);
-Route::get('/cars/delete/{id}', [CarsController::class, "delete"]);
+Route::get('/cars/{id}/delete', [CarsController::class, "delete"]);
 
 Route::get('/clients', [ClientsController::class, "index"]);
-Route::get('/clients/edit/{id}', [ClientsController::class, "edit"]);
-Route::post('/clients/update/{id}', [ClientsController::class, "update"]);
+Route::get('/clients/{id}/edit', [ClientsController::class, "edit"]);
+Route::post('/clients/{id}/update', [ClientsController::class, "update"]);
 Route::get('/clients/create', [ClientsController::class, "create"]);
 Route::post('/clients/create', [ClientsController::class, "addToDB"]);
-Route::get('/clients/delete/{id}', [ClientsController::class, "delete"]);
+Route::get('/clients/{id}/delete', [ClientsController::class, "delete"]);
+Route::get('/clients/{id}/add-rental', [ClientsController::class, "addRental"]);
+Route::post('/clients/{id}/add-rental', [ClientsController::class, "addRentalToDB"]);
 
 Route::get('/rentals', [RentalsController::class, "index"]);
-Route::get('/rentals/edit/{id}', [RentalsController::class, "edit"]);
-Route::post('/rentals/update/{id}', [RentalsController::class, "update"]);
-Route::get('/rentals/create', [RentalsController::class, "create"]);
-Route::post('/rentals/create', [RentalsController::class, "addToDB"]);
-Route::get('/rentals/delete/{id}', [RentalsController::class, "delete"]);
+Route::get('/rentals/{id}/return', [RentalsController::class, "return"]);
+Route::get('/rentals/{id}/delete', [RentalsController::class, "delete"]);

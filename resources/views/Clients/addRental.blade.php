@@ -2,15 +2,15 @@
 
 @section('banner')
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
+    <div class="overlay"></div>
+    <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
-          <div class="col-md-9 ftco-animate pb-5">
-            <h1 class="mb-3 bread">Add Client</h1>
-          </div>
+            <div class="col-md-9 ftco-animate pb-5">
+                <h1 class="mb-3 bread">Add Rental</h1>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 @endsection
 
 @section('content')
@@ -18,27 +18,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/clients/create" class="bg-white p-5 contact-form">
+                <form method="POST" action="/clients/{{$model->client_id}}/add-rental" class="bg-white p-5 contact-form">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
-                            <div class="form-group">
-                                <input name="first_name" type="text" class="form-control" placeholder="First Name" value="{{ $model->first_name }}">
+                            <div class="input-group">
+                                <label class="input-group-text">
+                                    Car
+                                </label>
+                                <select name="car_id" class="form-control validate">
+                                    @foreach($cars as $car)
+                                        <option value="{{$car->id}}" {{$model->car_id == $car->id ? "selected" : ""}}>{{$car->brand}} {{$car->model}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-6">
-                            <div class="form-group">
-                                <input name="last_name" type="text" class="form-control" placeholder="Last Name" value="{{ $model->last_name }}">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input name="email" type="text" class="form-control" placeholder="E-Mail" value="{{ $model->email }}">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input name="phone" type="text" class="form-control" placeholder="Phone Number" value="{{ $model->phone }}">
+                            <div class="input-group">
+                                <label class="input-group-text">
+                                    Rental date
+                                </label>
+                                <input name="rental_date" class="form-control validate" type="date" value="{{ date('Y-m-d', strtotime($model->rental_date)) }}">
                             </div>
                         </div>
                         <div class="col-md-6">

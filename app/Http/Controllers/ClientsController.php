@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\Client;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -54,5 +56,29 @@ class ClientsController extends Controller
         $model->is_active = false;
         $model->save();
         return redirect("/clients");
+    }
+
+    public function addRental($id)
+    {
+        $model = new Rental();
+        $model->client_id = $id;
+        $cars = Car::where("is_active", "=", true)->where("is_available", "=", true)->get();
+        return view("Clients.addRental", ["model"=> $model, "cars"=>$cars]);
+    }
+    public function addRentalToDB($id, Request $request)
+    {
+        $model = new Rental();
+        $model->rental_date = $request->input("rental_date");
+        $model->client_id = $id;
+
+        $carId = $request->input("car_id");
+        $model->car_id = $carId;
+        $car = Car::find($carId);
+        $car->is_available = false;
+        $car->save();
+
+        $model->is_active = true;
+        $model->save();
+        return redirect("/rentals");
     }
 }

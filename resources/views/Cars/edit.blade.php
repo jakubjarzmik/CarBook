@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/cars/update/{{ $model->id }}" enctype="multipart/form-data" class="bg-white p-5 contact-form">
+                <form method="POST" action="/cars/{{ $model->id }}/update" enctype="multipart/form-data" class="bg-white p-5 contact-form">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-lg-6">

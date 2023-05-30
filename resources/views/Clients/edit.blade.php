@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-            <h1 class="mb-3 bread">Edit {{ $model->brand }} {{ $model->model }}</h1>
+            <h1 class="mb-3 bread">Edit Client: {{ $model->first_name }} {{ $model->last_name }}</h1>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/clients/update/{{ $model->id }}" class="bg-white p-5 contact-form">
+                <form method="POST" action="/clients/{{ $model->id }}/update" class="bg-white p-5 contact-form">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
