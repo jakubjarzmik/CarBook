@@ -92,7 +92,7 @@ class CarsController extends Controller
         $rules = [
             'brand' => 'required|min:2',
             'model' => 'required|min:2',
-            'rental_price' => 'required|numeric',
+            'rental_price' => 'required|numeric|gt:0',
         ];
 
         $messages = [
@@ -102,6 +102,7 @@ class CarsController extends Controller
             'model.min' => 'Model must be at least 2 characters.',
             'rental_price.required' => 'Rental price is required.',
             'rental_price.numeric' => 'Rental price must be numeric.',
+            'rental_price.gt' => 'Rental price must be greater than 0.',
         ];
 
         if (array_key_exists($property, $rules)) {
