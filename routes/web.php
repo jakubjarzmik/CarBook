@@ -41,3 +41,4 @@ Route::post('/clients/validate-model', [ClientsController::class, "validateModel
 Route::get('/rentals', [RentalsController::class, "index"]);
 Route::get('/rentals/{id}/return', [RentalsController::class, "return"]);
 Route::get('/rentals/{id}/delete', [RentalsController::class, "delete"]);
+Route::get('/rentals/search', [RentalsController::class, 'search']);

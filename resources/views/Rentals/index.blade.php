@@ -17,6 +17,9 @@
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row">
+            <input type="text" id="search" class="form-control" placeholder="Search...">
+        </div>
+        <div class="row">
             <table class="table">
                 <thead>
                     <tr>
@@ -36,7 +39,7 @@
                         <td>{{ $model->return_date }}</td>
                         <td>
                             <a href="{{ url()->current() }}/{{ $model->id }}/return" class="btn btn-primary py-2 ml-1 {{$model->return_date!=null ? 'disabled' : ''}}">Return car</a>
-                            <a href="{{ url()->current() }}/{{ $model->id }}/delete" class="btn btn-danger py-2 ml-1">Delete</a>
+                            <a href="{{ url()->current() }}/{{ $model->id }}/delete" class="btn btn-danger delete-btn py-2 ml-1">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -45,4 +48,39 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section("scripts")
+<script>
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            $.ajax({
+                url: '/rentals/search',
+                type: 'GET',
+                data: { query: $(this).val() },
+                success: function(data) {
+                    var tbody = '';
+                    for (var i = 0; i < data.models.length; i++) {
+                        var model = data.models[i];
+                        var row = '<tr>';
+                        row += '<td>' + model.client.first_name + ' ' + model.client.last_name + '</td>';
+                        row += '<td>' + model.car.brand + ' ' + model.car.model + '</td>';
+                        row += '<td>' + model.rental_date + '</td>';
+                        row += '<td>' + (model.return_date ? model.return_date : '') + '</td>';
+                        row += '<td>' +
+                                '<a href="/rentals/' + model.id + '/return" class="btn btn-primary py-2 ml-1 ' + (model.return_date != null ? 'disabled' : '') + '">Return car</a>' +
+                                '<a href="/rentals/' + model.id + '/delete" class="btn btn-danger py-2 ml-1 delete-btn">Delete</a>' +
+                               '</td>';
+                        row += '</tr>';
+                        tbody += row;
+                    }
+                    $('table tbody').html(tbody);
+                }
+            });
+        });
+    });
+</script>
+
+
+
 @endsection
